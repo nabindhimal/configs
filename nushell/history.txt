@@ -1,0 +1,354 @@
+clear
+cls
+clear
+ps
+clear
+ls
+cat books.txt
+cd Downloads/
+ls
+mv `1.docx` ~/college/NOS/
+ls
+unzip `Tapping lesson 2.zip`
+ls
+rm `Tapping lesson 2.zip`
+ls
+cls
+clear
+ls -l
+ls -la
+cd .config/
+ls
+cd nushell/
+s
+ls
+v config.nu
+vi config.nu
+cls
+clear
+ls
+pwd
+who ami
+ls
+cls
+clear
+ls
+whoami
+pwd
+clear
+cd .config/nushell/
+vi config.nu
+cls
+vi config.nu
+clear
+vi config.nu
+cls
+v
+nv
+john
+vi config.nu
+cls
+john
+cls
+fortune
+cls
+vi config.nu
+cls
+nu
+nu
+nu
+nu
+nu
+cls
+ls
+ps where cpu > 0
+ps where cpu > 1
+cls
+ps | where cpu > 2
+ps | where cpu > 5
+ps | where cpu > 6
+htop
+cls
+ps | where cpu > 5
+ls | where size > 50MB
+ls | where size > 50KB
+pwd
+ls
+cd Documents/cyber/
+ls | where size > 50KB
+ls | sort-by size | reverse 
+ls
+pwd
+cd books/
+ls | sort-by size | reverse 
+cls
+pwd
+cls
+nmap localhost
+purgre smbclient
+sudo apt remove --purge smbclient 
+cleaner 
+nmap localhost
+cls
+$nu.env-path
+cd .config/nushell/
+cat config.nu
+$nu.env-path
+ls
+v env.nu
+v config.nu
+cls
+cd .config/nushell/
+ls
+v env.nu
+vi env.nu
+vi config.nu
+cls
+vi config.nu
+cls
+nu
+sudo mv /etc/hosts ~/Downloads/
+cls
+musql -u myuser -p
+mysql -u myuser -p
+cmus
+ls
+whoami
+pwd
+cls
+ls
+cd .config/nushell/
+ls
+v config.nu
+cls
+ls
+cat apps | cowsay
+cls
+pwd
+whoami
+cmatrix
+cmatrix | cowsay
+cmatrix
+cls
+pws
+cls
+which nu
+echo $0
+cls
+pwd
+ls
+cat books.txt
+which cat
+bat books.txt
+cls
+dust
+cls
+ls
+which ls
+exa
+exa -la
+cls
+ls
+which cat
+cls
+bat books.txt
+nv
+v
+cls
+pwd
+ls
+cls
+pwsh
+cls
+neofetch 
+ls
+neofetch 
+ls
+bat apps
+cd help/
+ls
+cd sql/
+ls
+open `dump file restore.mp4`
+cls
+play `dump file creation.mp4`
+cls
+ls
+bat basic_quiries.txt
+dust -d 1
+dust
+cls
+ls
+bat wildcards.txt
+ifconfig 
+ls
+cls
+cd help/
+ls
+cd sql/
+ls
+cat update_delete.txt
+ls
+cat inserting_date.txt
+cat basic_quiries.txt
+ls
+cat create_tables.txt
+cat update_delete.txt
+pwsh
+cmus
+echo $0
+cls
+ls
+s
+cls
+ls
+neofetch 
+ls
+ls | sort-by type 
+exit
+ls
+pwd
+neofetch 
+cat rice.txt
+which cat
+bat rice.txt
+which bat
+whereis cat
+cd .config/nushell/
+ls
+cat config.nu
+cat ~/.bash_aliases
+cls
+cat ~/.bash_aliases
+v config.nu
+cls
+cd ~
+cd Downloads/
+..
+help
+help: incomplete alias
+v config.nu
+ls
+cd .config/nushell/
+v config.nu
+ls
+vi config.nu
+nu
+cd .config/nushell/
+vi config.nu
+cat config.nu | grep alias
+cat config.nu | grep alias | awk {print $2}
+cat config.nu | grep alias | awk {print $2} | sed "s/'//"
+cat config.nu | grep alias | sed "s/'//"
+cat config.nu | grep alias | sed "s/'//" | sed "s/'//"
+cat config.nu | grep alias | sed "s/'//" | sed "s/'//" | sed 's/"//'
+cat config.nu | grep alias | sed "s/'//" | sed "s/'//" | sed 's/"//' | sed 's/"//'
+v config.nu
+vi config.nu
+cls
+vi config.nu
+cls
+nu
+neofetch 
+ncmpcpp 
+ls
+ls -la
+pwd
+echo $0
+ls where 
+ls
+which ls
+exa
+ls -l
+cd .config/nushell/
+ls
+v config.nu
+ls
+nu
+ls
+cls
+sudo mv /etc/hosts ~
+ls
+pfetch
+ps | where cpu > 5
+ps | where cpu > 4
+ps | where cpu > 2
+ps | where cpu > 0
+ps | where cpu < 0
+ps | where cpu > 0
+ps | where memory > 100MB
+ps | where mem > 100MB
+ps | where mem > 10MB
+ps | where mem > 500
+ps | where mem > 500MB
+ps | where mem > 200MB
+ps | where mem > 50MB
+cleaner
+ncmpcpp 
+cls
+ps | grep firefox
+sudo killall firefox
+sudo killall firefox-esr
+ps | grep firefox
+ps | where mem > 50MB
+sudo systemctl stop mysql 
+ps | where mem > 50MB
+free
+kill 2079
+free
+kill 2013
+kill 2012
+ps | where mem > 50MB
+free
+ps | where mem > 100MB
+ps | where mem > 200MB
+ps | where mem > 150MB
+ps | where mem > 10MB
+kill 131498
+ps | where mem > 10MB
+free
+ps | where mem > 20MB
+kill 2063
+kill 2133
+ps | where mem > 20MB
+kill 1708
+ps | where mem > 20MB
+kill 1713
+ps | where mem > 20MB
+ps | grep -i pipewire
+free
+ps | where mem > 0MB
+kill 827
+sudo kill 827
+sudo systemctl disable cupsd 
+status
+sudo systemctl disable cups-browsed  
+nmap localhost
+free
+ps
+ps | order by mem
+ps | asec mem
+ps
+ps | where mem > 10MB
+ps | where mem > 100MB
+file /usr/libexec/xdg-desktop-portal
+/usr/libexec/xdg-desktop-portal
+ps | grep firefox-esr
+ps | grep firefox-esr | xargs kill
+ps | grep firefox-esr | sudo xargs kill
+ps | grep firefox-esr | sudo xargs kill f
+sudo killlall firefox-esr 
+sudo killall firefox-esr 
+ls
+ps | where mem > 100MB
+kill 1971
+ps | where mem > 100MB
+kill 2045
+l
+which l
+ls
+\ls
+cls
+l
+dust
+cls
