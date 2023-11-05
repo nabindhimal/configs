@@ -168,7 +168,7 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "p", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
 # CHANGE FOCUS USING VIM OR DIRECTIONAL KEYS
     Key([mod], "Up", lazy.layout.up()),
@@ -253,7 +253,6 @@ keys = [
 
     Key([mod], "b", lazy.group['scratchpad'].dropdown_toggle('news')),
 
-    Key([mod], "f", lazy.group['scratchpad'].dropdown_toggle('files')),
 
     Key(['control'], 'space', lazy.group['scratchpad'].dropdown_toggle('alacritty')),
     ]
@@ -263,18 +262,17 @@ keys = [
 # Groups
 
 groups = [
-        Group(i) for i in ["", "", "󰓇", "󰄛", "󰑣", "󰣚", "", "",""]
+        Group(i) for i in ["", "", "󰓇", "󰄛", "", "󰣚", "", "",""]
         ]
 
 
 # Add ScratchPad group
 scratchpad_group = ScratchPad("scratchpad", [
     
-    DropDown("music", "xterm -e ncmpcpp", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
+    DropDown("music", "alacritty -e ncmpcpp", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
 
     DropDown("news", "alacritty -e newsboat", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
 
-    DropDown("files", "xterm -e lf", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
 
     DropDown("alacritty", "alacritty", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
 
@@ -398,11 +396,11 @@ def get_widgets(primary=False):
             foreground=catppuccin["red"],
             background="#00000000",
             ),
-      widget.TextBox(
+        widget.TextBox(
             text="",
             padding=0,
             fontsize=30,
-            foreground=catppuccin["peach"],
+            foreground=catppuccin["green"],
             background="#00000000",
             ),  
         widget.CheckUpdates(
@@ -412,45 +410,6 @@ def get_widgets(primary=False):
             colour_have_updates=catppuccin["black"],
             colour_no_updates=catppuccin["black"],
             foreground=catppuccin["black"],
-            background=catppuccin["peach"],
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["peach"],
-            background="#00000000",
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["sky"],
-            background="#00000000",
-            ),
-        widget.Volume(
-            fmt="󰕾 {}",
-            mute_command="amixer -D pulse set Master toggle",
-            foreground=catppuccin["black"],
-            background=catppuccin["sky"],
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["sky"],
-            background="#00000000",
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["green"],
-            background="#00000000",
-            ),
-        widget.Clock(
-            format="󰥔 %I:%M %p",
-            foreground=catppuccin["crust"],
             background=catppuccin["green"],
             ),
         widget.TextBox(
@@ -460,9 +419,100 @@ def get_widgets(primary=False):
             foreground=catppuccin["green"],
             background="#00000000",
             ),
-            ]
-    if primary:
-        widgets.insert(26, widget.Systray())
+        # widget.TextBox(
+        #     text="",
+        #     padding=0,
+        #     fontsize=30,
+        #     foreground=catppuccin["sky"],
+        #     background="#00000000",
+        #     ),
+        # widget.Volume(
+        #     fmt="󰕾 {}",
+        #     mute_command="amixer -D pulse set Master toggle",
+        #     foreground=catppuccin["black"],
+        #     background=catppuccin["sky"],
+        #     ),
+        # widget.TextBox(
+        #     text="",
+        #     padding=0,
+        #     fontsize=30,
+        #     foreground=catppuccin["sky"],
+        #     background="#00000000",
+        #     ),
+    # widget.TextBox(
+    #         text="",
+    #         padding=0,
+    #         fontsize=30,
+    #         foreground=catppuccin["sky"],
+            # background="#00000000",
+            # ),
+        # widget.GenPollText(
+            # name = "uptime",
+            # fmt = " {} " , update_interval = 60,
+            # func = lambda: subprocess.check_output("uptime | cut -d ' ' -f 4 ").decode("utf-8"),
+            # foreground=catppuccin["black"],
+            # background=catppuccin["sky"],
+            # ),
+        # widget.TextBox(
+            # text="",
+            # padding=0,
+            # fontsize=30,
+            # foreground=catppuccin["sky"],
+            # background="#00000000",
+            # ),    
+        widget.TextBox(
+            text="",
+            padding=0,
+            fontsize=30,
+            foreground=catppuccin["pink"],
+            background="#00000000",
+            ),
+        widget.Clock(
+            format="󰥔 %I:%M %p",
+            foreground=catppuccin["crust"],
+            background=catppuccin["pink"],
+            ),
+        widget.TextBox(
+            text="",
+            padding=0,
+            fontsize=30,
+            foreground=catppuccin["pink"],
+            background="#00000000",
+            ),
+        # widget.TextBox(
+        #     text="",
+        #     padding=0,
+        #     fontsize=30,
+        #     foreground=catppuccin["sky"],
+        #     background="#00000000",
+        #     ),
+        widget.Systray(
+            background="#00000000",
+            icon_size=20,
+            padding=5,
+            ),
+        # widget.TextBox(
+        #     text="",
+        #     padding=0,
+        #     fontsize=30,
+        #     foreground=catppuccin["sky"],
+        #     background="#00000000",
+        #     ),
+        widget.Spacer(
+           length = 5, 
+            ),
+        widget.Image(
+            filename= "~/bin/debian.png" , scale = "False",
+            background = "#00000000",
+            ),    
+
+         
+        ]
+
+    # if primary:
+    #     widgets.insert(26, widget.Systray(
+    #         background=catppuccin["sky"],
+    #         ))
     return widgets
 
 screens = [
@@ -471,6 +521,7 @@ screens = [
             get_widgets(primary=True),
             24,
             background="#00000000",
+            # background=catppuccin["green"],
         ),
     ),
 ]
