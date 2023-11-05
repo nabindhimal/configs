@@ -19,6 +19,9 @@ dunst &
 # Music
 mpd &
 
+# Clipboard manager
+parcellite &
+
 # Blue light filter
 ~/bin/redshift-on &
 
