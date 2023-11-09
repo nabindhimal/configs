@@ -1,5 +1,5 @@
 #!/bin/sh
-nm-applet &
+# nm-applet &
 
 # background
 ~/bin/changewallpapper &
@@ -16,11 +16,13 @@ dunst &
 # power manager
 /usr/bin/xfce4-power-manager &
 
+xscreensaver &
+
 # Music
 mpd &
 
 # Clipboard manager
-parcellite &
+# parcellite &
 
 # Blue light filter
 ~/bin/redshift-on &
@@ -29,7 +31,7 @@ parcellite &
 # xrdb .Xresources &
 
 # volume
-volumeicon &
+# volumeicon &
 
 
 

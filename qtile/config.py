@@ -283,12 +283,6 @@ scratchpad_group = ScratchPad("scratchpad", [
 groups.append(scratchpad_group)
 
 
-# # Apply layout and appearance settings to the ScratchPad group
-# for group in groups:
-#     if isinstance(group, ScratchPad):
-#         group.layout = layout.Tile(border_focus='#bd93f9') 
-
-
 
 
 group_keys = [str(i) for i in range(1, 10)]
@@ -333,196 +327,196 @@ layouts = [
     # layout.Zoomy(border_focus="#bd93f9", border_normal="#282836"),
 ]
 
-widget_defaults = dict(
-	font='Hack Nerd Font Regular',
-    forground=catppuccin["black"],
-    fontsize=18,
-    padding=2,
-)
-extension_defaults = widget_defaults.copy()
+# widget_defaults = dict(
+# 	font='Hack Nerd Font Regular',
+#     forground=catppuccin["black"],
+#     fontsize=18,
+#     padding=2,
+# )
+# extension_defaults = widget_defaults.copy()
 
-def get_widgets(primary=False):
-    widgets = [
-        widget.Spacer(
-            length=3,
-            background="#00000000",
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=33,
-            foreground=catppuccin["mauve"],
-            background="#00000000",
-            ),
-        widget.GroupBox(
-            highlight_method="line",
-            background=catppuccin["mauve"],
-            highlight_color=[catppuccin["mauve"], catppuccin["white"]],
-            inactive=catppuccin["black"],
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["mauve"],
-            background="#00000000",
-            ),
-        widget.Prompt(
-            foreground='#ea6962'
+# def get_widgets(primary=False):
+#     widgets = [
+#         widget.Spacer(
+#             length=3,
+#             background="#00000000",
+#             ),
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=33,
+#             foreground=catppuccin["mauve"],
+#             background="#00000000",
+#             ),
+#         widget.GroupBox(
+#             highlight_method="line",
+#             background=catppuccin["mauve"],
+#             highlight_color=[catppuccin["mauve"], catppuccin["white"]],
+#             inactive=catppuccin["black"],
+#             ),
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["mauve"],
+#             background="#00000000",
+#             ),
+#         widget.Prompt(
+#             foreground='#ea6962'
 
-            ),
-        widget.WindowName(
-            fontsize=16,
-            foreground=catppuccin["white"]
-            ),
-       widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["red"],
-            background="#00000000",
-            ),  
-        widget.Mpd2(
-            server="127.0.0.1",
-            port=6565,
-            update_interval=1,
-            foreground=catppuccin["black"],
-            background=catppuccin["red"],
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["red"],
-            background="#00000000",
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["green"],
-            background="#00000000",
-            ),  
-        widget.CheckUpdates(
-            distro='Debian',
-            display_format=' Updates: {updates}',
-            no_update_string=' No Updates',
-            colour_have_updates=catppuccin["black"],
-            colour_no_updates=catppuccin["black"],
-            foreground=catppuccin["black"],
-            background=catppuccin["green"],
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["green"],
-            background="#00000000",
-            ),
-        # widget.TextBox(
-        #     text="",
-        #     padding=0,
-        #     fontsize=30,
-        #     foreground=catppuccin["sky"],
-        #     background="#00000000",
-        #     ),
-        # widget.Volume(
-        #     fmt="󰕾 {}",
-        #     mute_command="amixer -D pulse set Master toggle",
-        #     foreground=catppuccin["black"],
-        #     background=catppuccin["sky"],
-        #     ),
-        # widget.TextBox(
-        #     text="",
-        #     padding=0,
-        #     fontsize=30,
-        #     foreground=catppuccin["sky"],
-        #     background="#00000000",
-        #     ),
-    # widget.TextBox(
-    #         text="",
-    #         padding=0,
-    #         fontsize=30,
-    #         foreground=catppuccin["sky"],
-            # background="#00000000",
-            # ),
-        # widget.GenPollText(
-            # name = "uptime",
-            # fmt = " {} " , update_interval = 60,
-            # func = lambda: subprocess.check_output("uptime | cut -d ' ' -f 4 ").decode("utf-8"),
-            # foreground=catppuccin["black"],
-            # background=catppuccin["sky"],
-            # ),
-        # widget.TextBox(
-            # text="",
-            # padding=0,
-            # fontsize=30,
-            # foreground=catppuccin["sky"],
-            # background="#00000000",
-            # ),    
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["pink"],
-            background="#00000000",
-            ),
-        widget.Clock(
-            format="󰥔 %I:%M %p",
-            foreground=catppuccin["crust"],
-            background=catppuccin["pink"],
-            ),
-        widget.TextBox(
-            text="",
-            padding=0,
-            fontsize=30,
-            foreground=catppuccin["pink"],
-            background="#00000000",
-            ),
-        # widget.TextBox(
-        #     text="",
-        #     padding=0,
-        #     fontsize=30,
-        #     foreground=catppuccin["sky"],
-        #     background="#00000000",
-        #     ),
-        widget.Systray(
-            background="#00000000",
-            icon_size=20,
-            padding=5,
-            ),
-        # widget.TextBox(
-        #     text="",
-        #     padding=0,
-        #     fontsize=30,
-        #     foreground=catppuccin["sky"],
-        #     background="#00000000",
-        #     ),
-        widget.Spacer(
-           length = 5, 
-            ),
-        widget.Image(
-            filename= "~/bin/debian.png" , scale = "False",
-            background = "#00000000",
-            ),    
+#             ),
+#         widget.WindowName(
+#             fontsize=16,
+#             foreground=catppuccin["white"]
+#             ),
+#        widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["red"],
+#             background="#00000000",
+#             ),  
+#         widget.Mpd2(
+#             server="127.0.0.1",
+#             port=6565,
+#             update_interval=1,
+#             foreground=catppuccin["black"],
+#             background=catppuccin["red"],
+#             ),
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["red"],
+#             background="#00000000",
+#             ),
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["green"],
+#             background="#00000000",
+#             ),  
+#         widget.CheckUpdates(
+#             distro='Debian',
+#             display_format=' Updates: {updates}',
+#             no_update_string=' No Updates',
+#             colour_have_updates=catppuccin["black"],
+#             colour_no_updates=catppuccin["black"],
+#             foreground=catppuccin["black"],
+#             background=catppuccin["green"],
+#             ),
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["green"],
+#             background="#00000000",
+#             ),
+#         # widget.TextBox(
+#         #     text="",
+#         #     padding=0,
+#         #     fontsize=30,
+#         #     foreground=catppuccin["sky"],
+#         #     background="#00000000",
+#         #     ),
+#         # widget.Volume(
+#         #     fmt="󰕾 {}",
+#         #     mute_command="amixer -D pulse set Master toggle",
+#         #     foreground=catppuccin["black"],
+#         #     background=catppuccin["sky"],
+#         #     ),
+#         # widget.TextBox(
+#         #     text="",
+#         #     padding=0,
+#         #     fontsize=30,
+#         #     foreground=catppuccin["sky"],
+#         #     background="#00000000",
+#         #     ),
+#     # widget.TextBox(
+#     #         text="",
+#     #         padding=0,
+#     #         fontsize=30,
+#     #         foreground=catppuccin["sky"],
+#             # background="#00000000",
+#             # ),
+#         # widget.GenPollText(
+#             # name = "uptime",
+#             # fmt = " {} " , update_interval = 60,
+#             # func = lambda: subprocess.check_output("uptime | cut -d ' ' -f 4 ").decode("utf-8"),
+#             # foreground=catppuccin["black"],
+#             # background=catppuccin["sky"],
+#             # ),
+#         # widget.TextBox(
+#             # text="",
+#             # padding=0,
+#             # fontsize=30,
+#             # foreground=catppuccin["sky"],
+#             # background="#00000000",
+#             # ),    
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["pink"],
+#             background="#00000000",
+#             ),
+#         widget.Clock(
+#             format="󰥔 %I:%M %p",
+#             foreground=catppuccin["crust"],
+#             background=catppuccin["pink"],
+#             ),
+#         widget.TextBox(
+#             text="",
+#             padding=0,
+#             fontsize=30,
+#             foreground=catppuccin["pink"],
+#             background="#00000000",
+#             ),
+#         # widget.TextBox(
+#         #     text="",
+#         #     padding=0,
+#         #     fontsize=30,
+#         #     foreground=catppuccin["sky"],
+#         #     background="#00000000",
+#         #     ),
+#         widget.Systray(
+#             background="#00000000",
+#             icon_size=20,
+#             padding=5,
+#             ),
+#         # widget.TextBox(
+#         #     text="",
+#         #     padding=0,
+#         #     fontsize=30,
+#         #     foreground=catppuccin["sky"],
+#         #     background="#00000000",
+#         #     ),
+#         widget.Spacer(
+#            length = 5, 
+#             ),
+#         widget.Image(
+#             filename= "~/bin/debian.png" , scale = "False",
+#             background = "#00000000",
+#             ),    
 
          
-        ]
+#         ]
 
-    # if primary:
+#     # if primary:
     #     widgets.insert(26, widget.Systray(
     #         background=catppuccin["sky"],
     #         ))
-    return widgets
+    # return widgets
 
 screens = [
     Screen(
-        top=bar.Bar(
-            get_widgets(primary=True),
-            24,
-            background="#00000000",
-            # background=catppuccin["green"],
-        ),
+        # top=bar.Bar(
+        #     get_widgets(primary=True),
+        #     24,
+        #     background="#00000000",
+        #     # background=catppuccin["green"],
+        # ),
     ),
 ]
 
