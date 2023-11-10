@@ -164,6 +164,7 @@ keys = [
 
 groups = [
         Group(i) for i in ["", "", "󰓇", "󰄛", "", "󰣚", "", "",""]
+	#	Group(i) for i in ["\uf269", "\uf19d", "", "\uf07c", "\uf03d", "\uf15c", "\uf120", "\uf0e0", "" ]
         ]
 
 
