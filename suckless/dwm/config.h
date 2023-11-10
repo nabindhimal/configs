@@ -2,24 +2,26 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 55;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono Nerd Font:size=10" };
-static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=10";
-static const char col_gray1[]       = "#222222";
+static const char *fonts[]          = { "JetBrains Mono Nerd Font:size=12" };
+static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=12";
+static const char col_gray1[]       = "#1E1E2E";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray3[]       = "#CDD6F4";
+static const char col_gray4[]       = "#6d6dae";
+static const char col_grry[]        = "#333333";
 static const char col_cyan[]        = "#005577";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
+	[SchemeSel]  = { col_gray4, col_gray1,  col_gray1  },
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "\uf269", "\uf19d", "", "\uf07c", "\uf03d", "\uf15c", "\uf120", "\uf0e0", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -27,14 +29,20 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       1 << 6,            0,           -1 },
+	{ "obs",  	  NULL,       NULL,       1 << 8,       	 0,           -1 },
+	{ "discord",  NULL,       NULL,       1 << 7,       	 0,           -1 },
+	{ "mpv",  	  NULL,       NULL,       0,       			 1,           -1 },
+	{ "qimgv",    NULL,       NULL,       0,       	 		 1,           -1 },
+	{ "Galculator",   NULL,       NULL,       0,       	 1,           -1 },
+	{ "kitty",    NULL,       NULL,       0,       	 		 0,           -1 },
 };
 
+
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -44,6 +52,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
+#include "movestack.c"
+
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
@@ -51,13 +61,15 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+
+
+#include <X11/XF86keysym.h>
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -77,6 +89,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	/*{ MODKEY,                       XK_space,  setlayout,      {0} },*/
+	{ MODKEY|ShiftMask,             XK_Right,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,      movestack,      {.i = -1 } },
+
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -94,7 +109,16 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+	{ 0,                            XF86XK_AudioMute, spawn, SHCMD("/home/mennnk/bin/changevolume mute") },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("/home/mennnk/bin/changevolume down") },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("/home/mennnk/bin/changevolume up") },
+	{ 0,                            XF86XK_Calculator, spawn, SHCMD("galculator") },
+
+
+
+
+
 };
 
 /* button definitions */
