@@ -13,13 +13,6 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.Popen([home])
 
-# @hook.subscribe.startup_once
-# def set_qtile_bar_properties():
-#     for window in qtile.windows_map.values():
-#         if "QtileBar" in window.name:
-#             window.window.set_property("_NET_WM_NAME", "QtileBar")
-
-
 mod = "mod4"
 
 catppuccin = {
@@ -169,6 +162,10 @@ keys = [
 
     Key([mod], "b", lazy.group['scratchpad'].dropdown_toggle('news')),
 
+    Key([mod], "g", lazy.group['scratchpad'].dropdown_toggle('mail')),
+
+
+
 
     Key(['control'], 'space', lazy.group['scratchpad'].dropdown_toggle('alacritty')),
     ]
@@ -176,10 +173,6 @@ keys = [
 # end of keys
 
 # Groups
-#["", "", "󰓇", "󰄛", "", "󰣚", "", "",""]
-
-
-
 groups = [
         Group(i) for i in [ "\uf269", "\uf19d", "", "\uf07c" , "\uf03d", "\uf15c", "\uf120", "\uf0e0", ""  ]   
 		]
@@ -191,7 +184,8 @@ scratchpad_group = ScratchPad("scratchpad", [
     DropDown("music", "alacritty -e ncmpcpp", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
 
     DropDown("news", "alacritty -e newsboat", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
-
+    
+    DropDown("mail", "alacritty -e neomutt", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
 
     DropDown("alacritty", "alacritty", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
 
@@ -236,7 +230,7 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(border_focus="#bd93f9", border_normal="#282836"),
     # layout.Matrix(border_focus="#bd93f9", border_normal="#282836"),
-    layout.MonadTall(margin=3, border_width=4, border_focus="#f28fad", border_normal="#282836"),
+    layout.MonadTall(margin=3, border_width=6, border_focus="#f28fad", border_normal="#282836"),
     # layout.MonadWide(border_focus="#bd93f9", border_normal="#282836"),
     # layout.RatioTile(margin=4, border_width=4, border_focus="#f8bd96", border_normal="#282836"),
     # layout.Tile(border_focus="#bd93f9", border_normal="#282836"),
@@ -256,22 +250,22 @@ extension_defaults = widget_defaults.copy()
 def get_widgets(primary=False):
     widgets = [
         widget.Spacer(
-            length=3,
-            background="#00000000",
+            length=7,
+            background=catppuccin["pure"],
             ),
         widget.Image(
-            filename= "~/bin/zep.svg" , scale = "False",
+            filename= "~/bin/logo.svg" , scale = "False",
             background =catppuccin["pure"],
             ),    
          widget.Spacer(
-            length=10,
-            background=catppuccin["crust"],
+            length=7,
+            background=catppuccin["pure"],
             ),
         widget.GroupBox(
             highlight_method="line",
             background=catppuccin["crust"],
             highlight_color=[catppuccin["pure"], catppuccin["purple"]],
-            inactive=catppuccin["pure"],
+            inactive=catppuccin["purple"],
             ),
         widget.Spacer(
             length=10,
@@ -295,14 +289,9 @@ def get_widgets(primary=False):
             background=catppuccin["crust"],
             ),
          widget.Spacer(
-            length=5,
+            length=10,
             background=catppuccin["crust"],
             ),
-         widget.Spacer(
-            length=5,
-            background=catppuccin["crust"],
-            ),
-
         widget.Clock(
             format="󰥔 %I:%M %p",
             foreground=catppuccin["pure"],
@@ -315,7 +304,11 @@ def get_widgets(primary=False):
         widget.Image(
             filename= "~/bin/debian.png" , scale = "False",
             background = catppuccin["crust"],
-            ),    
+            ),
+        widget.Spacer(
+            length=7,
+            background=catppuccin["crust"],
+            ),
         ]
     return widgets
 

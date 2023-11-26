@@ -2,10 +2,22 @@
 # Application keybindings #
 #####################
 
+super + shift + m
+	~/bin/movie
+
+alt + w
+	~/bin/wifi_info
+
+super + shift + v
+	~/bin/launchvm
+
+alt + b
+	~/bin/battery
+
 alt + c
 	~/bin/changewallpapper
 
-alt + d
+super + alt + d
 	~/bin/deletewallpaper
 
 super + Return
@@ -40,7 +52,9 @@ alt + t
 alt + n
 	~/bin/songchanger next
 
-	
+super + c
+	~/bin/currentsong
+
 #########
 # Scrot #
 #########
@@ -49,8 +63,8 @@ super + alt + @s
 	notify-send 'Scrot' 'Selected image to ~/Pictures/Screenshots'
 
 super + s
-	scrot -e 'mv $f ~/Pictures/Screenshots'; \
-	notify-send 'Scrot' 'Image saved to ~/Pictures/Screenshots'
+	scrot -e 'mv $f ~/Pictures/Screenshots/scrot'; \
+	notify-send 'Scrot' 'Image saved to ~/Pictures/Screenshots/scrot'
 	
 ## redshift
 super + alt + r
