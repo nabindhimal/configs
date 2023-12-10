@@ -31,7 +31,8 @@ catppuccin = {
     "white": "#d9e0ee",
     "gray": "#6e6c7e",
     "black": "#1a1826",
-    "crust": "#1E1E2E",
+    # "crust": "#1E1E2E",
+    "crust": "#111111",
     "pure":"#CDD6F4",
     "purple":"#6d6dae",
         }
@@ -47,10 +48,10 @@ keys = [
     Key([], "XF86Calculator", lazy.spawn("galculator")),
     
     # Decrease brightness
-    Key([], "XF86MonBrightnessDown", lazy.spawn("/home/mennnk/bin/changebrightness down")),
+    #Key([], "XF86MonBrightnessDown", lazy.spawn("/home/mennnk/bin/changebrightness down")),
 
     # Increase brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("/home/mennnk/bin/changebrightness up")),
+    #Key([], "XF86MonBrightnessUp", lazy.spawn("/home/mennnk/bin/changebrightness up")),
 
     # Take Screenshot
     Key([], "Print", lazy.spawn("gnome-screenshot -i")),
@@ -65,7 +66,7 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("/home/mennnk/bin/changevolume mute")),
 
     # Lock Screen
-    Key([], "F10", lazy.spawn("i3lock -i /home/mennnk/Pictures/Wallpappers/wallhaven-7pldde.png")),
+    Key([], "F10", lazy.spawn("cinnamon-screensaver-command -l")),
 
 
 
@@ -162,10 +163,10 @@ keys = [
 
     Key([mod], "b", lazy.group['scratchpad'].dropdown_toggle('news')),
 
+    Key([mod], "f", lazy.group['scratchpad'].dropdown_toggle('fox')),
+
+
     Key([mod], "g", lazy.group['scratchpad'].dropdown_toggle('mail')),
-
-
-
 
     Key(['control'], 'space', lazy.group['scratchpad'].dropdown_toggle('alacritty')),
     ]
@@ -181,13 +182,15 @@ groups = [
 # Add ScratchPad group
 scratchpad_group = ScratchPad("scratchpad", [
     
-    DropDown("music", "alacritty -e ncmpcpp", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
+    DropDown("music", "alacritty -e ncmpcpp", x=0.15, y=0.1, height=0.9, width=0.7, on_focus_lost_hide=False),
 
     DropDown("news", "alacritty -e newsboat", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
     
+    DropDown("fox", "librewolf", x=0.1, y=0.1, height=0.9, width=0.8, on_focus_lost_hide=False),
+
     DropDown("mail", "alacritty -e neomutt", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
 
-    DropDown("alacritty", "alacritty", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
+    DropDown("alacritty", "alacritty", x=0.1, y=0.06666666, height=0.9, width=0.8, on_focus_lost_hide=False),
 
     ])
 
@@ -274,7 +277,6 @@ def get_widgets(primary=False):
         widget.Prompt(
             foreground='#ea6962',
             background=catppuccin["crust"],
-
             ),
         widget.WindowName(
             fontsize=16,
@@ -289,9 +291,27 @@ def get_widgets(primary=False):
             background=catppuccin["crust"],
             ),
          widget.Spacer(
-            length=10,
+            length=12,
             background=catppuccin["crust"],
             ),
+         widget.CheckUpdates(
+            distro='Debian',
+            update_interval=60,
+            display_format=' Updates: {updates}',
+            font='JetBrainsMono Nerd Font',
+            fontsize=19,
+            colour_have_updates=catppuccin["red"],
+            no_update_string=' No Updates',
+            colour_no_updates=catppuccin["pure"],
+            foreground=catppuccin["pure"],
+            background=catppuccin["crust"],
+
+             ),
+        widget.Spacer(
+            length=12,
+            background=catppuccin["crust"],
+            ),
+
         widget.Clock(
             format="󰥔 %I:%M %p",
             foreground=catppuccin["pure"],
@@ -347,7 +367,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
-    border_focus="#bd93f9",
+    border_focus=catppuccin["sky"],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
