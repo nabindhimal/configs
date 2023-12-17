@@ -2,11 +2,14 @@
 # Application keybindings #
 #####################
 
+super + shift + c
+	/home/mennnk/bin/changecolorscheme
+
 super + shift + m
 	~/bin/movie
 
 alt + w
-	~/bin/wifi_info
+	~/bin/wifier
 
 super + shift + v
 	~/bin/launchvm
@@ -23,6 +26,8 @@ super + alt + d
 super + Return
 	kitty
 
+super + alt + Return
+	xterm
 # rofi launchers
 super + space
 	rofi -show drun
