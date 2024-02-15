@@ -1,0 +1,8 @@
+{
+  "term": {
+    "command": "alacritty --class alacritty-dropterm",
+    "animation": "fromTop",
+    "margin": 50,
+    "unfocus": "hide"
+  }
+  }
