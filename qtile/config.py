@@ -1,38 +1,6 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-
-
-
-
-
-# SOFTWARE.
-
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 import os
 import subprocess
 from libqtile import hook
@@ -46,15 +14,10 @@ def autostart():
     subprocess.Popen([home])
 
 mod = "mod4"
-#terminal = guess_terminal()
-"""
-Color schemes live here
-"""
 
 catppuccin = {
     "flamingo": "#F2CDCD",
     "lavander": "#b4befe",
-    # "mauve": "#DDB6F2",
     "mauve": "#cba6f7",
     "pink": "#f5c2e7",
     "maroon": "#e8a2af",
@@ -68,66 +31,13 @@ catppuccin = {
     "white": "#d9e0ee",
     "gray": "#6e6c7e",
     "black": "#1a1826",
-    "crust": "#11111b",
+    # "crust": "#1E1E2E",
+    "crust": "#111111",
+    "pure":"#CDD6F4",
+    "purple":"#6d6dae",
         }
 
 
-
-
-
-_jagl = {
-	'bg':   		'#1e1e2e',
-	'fg':			'#cdd6f4',
-    'dark-red':     '#eba0ac',
-    'red':          '#f38ba8',
-    'dark-green':   '#94e2d5',
-    'green':        '#a6e3a1',
-    'dark-yellow':  '#fab387',
-    'yellow':       '#f9e2af',
-    'dark-blue':    '#74c7ec',
-    'blue':         '#89b4fa',
-    'dark-magenta': '#cba6f7',
-    'magenta':      '#f5c2e7',
-    'dark-cyan':    '#94e2d5',
-    'cyan':         '#89dceb',
-    'dark-gray':    '#7f849c',
-    'gray':         '#9399b2',
-
-    'fg4':          '#7f849c',
-    'fg3':          '#6c7086',
-    'fg2':          '#585b70',
-    'fg1':          '#45475a',
-    'bg0':          '#313244',
-    'fg0':          '#181825',
-    'fg9':          '#bac2de'
-}
-
-_gruvbox = {
-    'bg':           '#282828',
-    'fg':           '#d4be98',
-    'dark-red':     '#ea6962',
-    'red':          '#ea6962',
-    'dark-green':   '#a9b665',
-    'green':        '#a9b665',
-    'dark-yellow':  '#e78a4e',
-    'yellow':       '#d8a657',
-    'dark-blue':    '#7daea3',
-    'blue':         '#7daea3',
-    'dark-magenta': '#d3869b',
-    'magenta':      '#d3869b',
-    'dark-cyan':    '#89b482',
-    'cyan':         '#89b482',
-    'dark-gray':    '#665c54',
-    'gray':         '#928374',
-
-    'fg4':          '#766f64',
-    'fg3':          '#665c54',
-    'fg2':          '#504945',
-    'fg1':          '#3c3836',
-    'bg0':          '#32302f',
-    'fg0':          '#1d2021',
-    'fg9':          '#ebdbb2'
-}
 
 color_schema = catppuccin
 
@@ -136,13 +46,10 @@ keys = [
 
     #Launch Calculator
     Key([], "XF86Calculator", lazy.spawn("galculator")),
+
+    # Mute Microphone
+    Key([], "XF86AudioMicMute", lazy.spawn("/home/mennnk/bin/changevolume micmute")),
     
-    # Decrease brightness
-    Key([], "XF86MonBrightnessDown", lazy.spawn("/home/mennnk/bin/changebrightness down")),
-
-    # Increase brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("/home/mennnk/bin/changebrightness up")),
-
     # Take Screenshot
     Key([], "Print", lazy.spawn("gnome-screenshot -i")),
 
@@ -156,9 +63,7 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("/home/mennnk/bin/changevolume mute")),
 
     # Lock Screen
-    Key([], "F10", lazy.spawn("i3lock")),
-
-
+    Key([], "F10", lazy.spawn("cinnamon-screensaver-command -l")),
 
 
 
@@ -253,6 +158,10 @@ keys = [
 
     Key([mod], "b", lazy.group['scratchpad'].dropdown_toggle('news')),
 
+    Key([mod], "f", lazy.group['scratchpad'].dropdown_toggle('fox')),
+
+
+    Key([mod], "g", lazy.group['scratchpad'].dropdown_toggle('mail')),
 
     Key(['control'], 'space', lazy.group['scratchpad'].dropdown_toggle('alacritty')),
     ]
@@ -260,28 +169,29 @@ keys = [
 # end of keys
 
 # Groups
-
 groups = [
-        Group(i) for i in ["", "", "󰓇", "󰄛", "", "󰣚", "", "",""]
-        ]
+        Group(i) for i in [ "\uf120", "\uf19d", "", "\uf07c" , "\uf03d", "\uf15c", "\uf269", "\uf0e0", ""  ]   
+		]
 
 
 # Add ScratchPad group
 scratchpad_group = ScratchPad("scratchpad", [
     
-    DropDown("music", "alacritty -e ncmpcpp", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
+    DropDown("music", "alacritty -e ncmpcpp", x=0.15, y=0.1, height=0.9, width=0.7, on_focus_lost_hide=False),
 
     DropDown("news", "alacritty -e newsboat", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
+    
+    DropDown("fox", "librewolf", x=0.1, y=0.1, height=0.9, width=0.8, on_focus_lost_hide=False),
 
+    # DropDown("mail", "alacritty -e neomutt", x=0.25, y=0.1, height=0.9, width=0.5,on_focus_lost_hide=False),
 
-    DropDown("alacritty", "alacritty", x=0.25, y=0.1, height=0.9, width=0.5, on_focus_lost_hide=False),
+    DropDown("alacritty", "alacritty", x=0.1, y=0.06666666, height=0.9, width=0.8, on_focus_lost_hide=False),
 
     ])
 
 
 # Append the ScratchPad group to the existing groups list
 groups.append(scratchpad_group)
-
 
 
 
@@ -318,7 +228,7 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(border_focus="#bd93f9", border_normal="#282836"),
     # layout.Matrix(border_focus="#bd93f9", border_normal="#282836"),
-    layout.MonadTall(margin=3, border_width=4, border_focus="#f28fad", border_normal="#282836"),
+    layout.MonadTall(margin=3, border_width=6, border_focus="#f28fad", border_normal="#282836"),
     # layout.MonadWide(border_focus="#bd93f9", border_normal="#282836"),
     # layout.RatioTile(margin=4, border_width=4, border_focus="#f8bd96", border_normal="#282836"),
     # layout.Tile(border_focus="#bd93f9", border_normal="#282836"),
@@ -327,196 +237,90 @@ layouts = [
     # layout.Zoomy(border_focus="#bd93f9", border_normal="#282836"),
 ]
 
-# widget_defaults = dict(
-# 	font='Hack Nerd Font Regular',
-#     forground=catppuccin["black"],
-#     fontsize=18,
-#     padding=2,
-# )
-# extension_defaults = widget_defaults.copy()
+widget_defaults = dict(
+	font='JetBrains Mono Nerd Font',
+    forground=catppuccin["pure"],
+    fontsize=18,
+    padding=2,
+)
+extension_defaults = widget_defaults.copy()
 
-# def get_widgets(primary=False):
-#     widgets = [
-#         widget.Spacer(
-#             length=3,
-#             background="#00000000",
-#             ),
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=33,
-#             foreground=catppuccin["mauve"],
-#             background="#00000000",
-#             ),
-#         widget.GroupBox(
-#             highlight_method="line",
-#             background=catppuccin["mauve"],
-#             highlight_color=[catppuccin["mauve"], catppuccin["white"]],
-#             inactive=catppuccin["black"],
-#             ),
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["mauve"],
-#             background="#00000000",
-#             ),
-#         widget.Prompt(
-#             foreground='#ea6962'
+def get_widgets(primary=False):
+    widgets = [
+        widget.Spacer(
+            length=7,
+            background=catppuccin["pure"],
+            ),
+        widget.Image(
+            filename= "~/bin/logo.svg" , scale = "False",
+            background =catppuccin["pure"],
+            ),    
+         widget.Spacer(
+            length=7,
+            background=catppuccin["pure"],
+            ),
+        widget.GroupBox(
+            highlight_method="line",
+            background=catppuccin["crust"],
+            highlight_color=[catppuccin["pure"], catppuccin["purple"]],
+            inactive=catppuccin["purple"],
+            ),
+        widget.Spacer(
+            length=10,
+            background=catppuccin["crust"],
+            ),
+        widget.Prompt(
+            foreground='#ea6962',
+            background=catppuccin["crust"],
+            ),
+        widget.WindowName(
+            fontsize=16,
+            foreground=catppuccin["pure"],
+            background=catppuccin["crust"],
+            ),
+        widget.Mpd2(
+            server="127.0.0.1",
+            port=6565,
+            update_interval=1,
+            foreground=catppuccin["pure"],
+            background=catppuccin["crust"],
+            ),
+         widget.Spacer(
+            length=12,
+            background=catppuccin["crust"],
+            ),
+        widget.Spacer(
+            length=12,
+            background=catppuccin["crust"],
+            ),
 
-#             ),
-#         widget.WindowName(
-#             fontsize=16,
-#             foreground=catppuccin["white"]
-#             ),
-#        widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["red"],
-#             background="#00000000",
-#             ),  
-#         widget.Mpd2(
-#             server="127.0.0.1",
-#             port=6565,
-#             update_interval=1,
-#             foreground=catppuccin["black"],
-#             background=catppuccin["red"],
-#             ),
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["red"],
-#             background="#00000000",
-#             ),
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["green"],
-#             background="#00000000",
-#             ),  
-#         widget.CheckUpdates(
-#             distro='Debian',
-#             display_format=' Updates: {updates}',
-#             no_update_string=' No Updates',
-#             colour_have_updates=catppuccin["black"],
-#             colour_no_updates=catppuccin["black"],
-#             foreground=catppuccin["black"],
-#             background=catppuccin["green"],
-#             ),
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["green"],
-#             background="#00000000",
-#             ),
-#         # widget.TextBox(
-#         #     text="",
-#         #     padding=0,
-#         #     fontsize=30,
-#         #     foreground=catppuccin["sky"],
-#         #     background="#00000000",
-#         #     ),
-#         # widget.Volume(
-#         #     fmt="󰕾 {}",
-#         #     mute_command="amixer -D pulse set Master toggle",
-#         #     foreground=catppuccin["black"],
-#         #     background=catppuccin["sky"],
-#         #     ),
-#         # widget.TextBox(
-#         #     text="",
-#         #     padding=0,
-#         #     fontsize=30,
-#         #     foreground=catppuccin["sky"],
-#         #     background="#00000000",
-#         #     ),
-#     # widget.TextBox(
-#     #         text="",
-#     #         padding=0,
-#     #         fontsize=30,
-#     #         foreground=catppuccin["sky"],
-#             # background="#00000000",
-#             # ),
-#         # widget.GenPollText(
-#             # name = "uptime",
-#             # fmt = " {} " , update_interval = 60,
-#             # func = lambda: subprocess.check_output("uptime | cut -d ' ' -f 4 ").decode("utf-8"),
-#             # foreground=catppuccin["black"],
-#             # background=catppuccin["sky"],
-#             # ),
-#         # widget.TextBox(
-#             # text="",
-#             # padding=0,
-#             # fontsize=30,
-#             # foreground=catppuccin["sky"],
-#             # background="#00000000",
-#             # ),    
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["pink"],
-#             background="#00000000",
-#             ),
-#         widget.Clock(
-#             format="󰥔 %I:%M %p",
-#             foreground=catppuccin["crust"],
-#             background=catppuccin["pink"],
-#             ),
-#         widget.TextBox(
-#             text="",
-#             padding=0,
-#             fontsize=30,
-#             foreground=catppuccin["pink"],
-#             background="#00000000",
-#             ),
-#         # widget.TextBox(
-#         #     text="",
-#         #     padding=0,
-#         #     fontsize=30,
-#         #     foreground=catppuccin["sky"],
-#         #     background="#00000000",
-#         #     ),
-#         widget.Systray(
-#             background="#00000000",
-#             icon_size=20,
-#             padding=5,
-#             ),
-#         # widget.TextBox(
-#         #     text="",
-#         #     padding=0,
-#         #     fontsize=30,
-#         #     foreground=catppuccin["sky"],
-#         #     background="#00000000",
-#         #     ),
-#         widget.Spacer(
-#            length = 5, 
-#             ),
-#         widget.Image(
-#             filename= "~/bin/debian.png" , scale = "False",
-#             background = "#00000000",
-#             ),    
-
-         
-#         ]
-
-#     # if primary:
-    #     widgets.insert(26, widget.Systray(
-    #         background=catppuccin["sky"],
-    #         ))
-    # return widgets
+        widget.Clock(
+            format="󰥔 %I:%M %p",
+            foreground=catppuccin["pure"],
+            background=catppuccin["crust"],
+            ),
+        widget.Spacer(
+           length = 10, 
+           background=catppuccin["crust"],
+            ),
+        widget.Image(
+            filename= "~/bin/debian.png" , scale = "False",
+            background = catppuccin["crust"],
+            ),
+        widget.Spacer(
+            length=7,
+            background= catppuccin["crust"],
+            ),
+        ]
+    return widgets
 
 screens = [
     Screen(
-        # top=bar.Bar(
-        #     get_widgets(primary=True),
-        #     24,
-        #     background="#00000000",
-        #     # background=catppuccin["green"],
-        # ),
+        top=bar.Bar(
+            get_widgets(primary=True),
+            24,
+            background="#00000000",
+        ),
     ),
 ]
 
@@ -545,7 +349,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
-    border_focus="#bd93f9",
+    border_focus=catppuccin["sky"],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
